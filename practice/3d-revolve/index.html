@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>3D Revolve</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+
+		div{
+			width: 200px;
+			height: 200px;
+			line-height: 100px;
+			text-align: center;
+			position: absolute;
+			opacity: 0.6;
+		}
+
+		.ct{
+			margin: 300px auto;
+			/*border: 1px solid #333;*/
+			position: relative;
+			transform-style: preserve-3d;
+			transform: rotateY(0deg);
+			opacity: 1;
+			transition: scroll 1s;
+		}
+		.front{
+			background-color: blue;
+			transform: translateZ(100px);
+			perspective: 300px;
+		}
+		.back{
+			background-color: red;
+			transform: rotateY(180deg) translateZ(100px);
+			perspective: 300px;
+			backface-visibility: hidden;
+		}
+		.right{
+			background-color: yellow;
+			transform: rotateY(90deg) translateZ(100px);/*右 正*/
+			perspective: 300px;
+		}
+		.left{
+			background-color: green;
+			transform: rotateY(-90deg) translateZ(100px);
+			perspective: 300px;
+		}
+		.top{
+			background-color: grey;
+			transform: rotateX(90deg) translateZ(100px);
+			perspective: 300px;
+		}
+		.bottom{
+			background-color: pink;
+			transform: rotateX(-90deg) translateZ(100px);
+			perspective: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<div class="front">前</div>
+		<div class="back">后</div>
+		<div class="right">右</div>
+		<div class="left">左</div>
+		<div class="top">上</div>
+		<div class="bottom">下</div>
+	</div>
+</body>
+</html>

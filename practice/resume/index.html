@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>顾嘉诚的简历</title>
+	<script type="text/javascript" src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>
+	<script src="./iconfont.js"></script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+
+		.icon {
+		   width: 1em; height: 1em;
+		   vertical-align: -0.15em;
+		   fill: currentColor;
+		   overflow: hidden;
+		}
+
+		body{
+			overflow: hidden;
+			font-family: "Microsoft YaHei",sans-serif;
+			
+		}
+
+		.main>div{
+			background-color: rgb(71,185,154);
+			text-align: center;
+			/*position: relative;*/
+			display: table;
+			width: 100%;
+		}
+		.main>div>div{
+			/*position: absolute;
+			top: 50%;*/
+			display: table-cell;
+			vertical-align: middle;
+			width: 100%;
+		}
+		.main>ul{
+			position: fixed;
+			right: 50px;
+		}
+		.main>ul li{
+			padding: 10px 0;
+		}
+		.main>ul li>a{
+			color: #333;
+			border: 1px solid #eee;
+			border-radius: 50%;
+			width: 8px;
+			height: 8px;
+			display: block;
+		}
+
+		.main>div>div>h3{
+			font-weight: 900;
+			color: #fff;
+			font-size: 50px;
+			padding: 30px 0;
+		}
+		.main>div>div>p{
+			color: #ddd;
+			font-size: 40px;
+		}
+		#info img{
+			width: 180px;
+			border-radius: 50%;
+			border: 7px solid #ccc;
+		}
+
+		.main>#project>div>ul{
+			width: 1200px;
+			margin: 0 auto;
+		}
+		.main>#project>div>ul:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.main>#project>div>ul>li{
+			float: left;
+			width: 600px;
+			text-align: left;
+			margin-bottom: 20px;
+		}
+		.main>#project>div>ul>li>a{
+			color: #fff;
+			font-size: 60px;
+			border-radius: 50%;
+			background-color: rgba(100,100,100,0.5);
+			padding: 20px;
+			display: block;
+			float: left;
+			width: 60px;
+			height: 60px;
+			margin: 0 50px;
+		}
+		.main>#project>div>ul>li>h4>a{
+			font-size: 40px;
+			color: rgba(100,100,100,0.5);
+		}
+		.main>#project>div>ul>li>h4{
+			margin-top: 5px;
+			margin-bottom: 9px;
+		}
+		.main>#project>div>ul>li>p{
+			font-size: 20px;
+			color: rgb(158,218,207);
+			padding: 3px 0;
+		}
+
+		.main>#skills>div>ul>li>p.lan{
+			float: left;
+			line-height: 50px;
+			color: #fff;
+			font-size: 30px;
+			width: 200px;
+			text-align: left;
+		}
+		.main>#skills>div>ul>li>p.percent{
+			line-height: 50px;
+			color: #fff;
+			font-size: 30px;
+		}
+		.main>#skills>div>ul>li:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.main>#skills>div>ul>li{
+			width: 1100px;
+			margin: 0 auto;
+			margin-bottom: 20px;
+		}
+		.pannel-ct{
+			height: 50px;
+			width: 800px;
+			background-color: rgb(104,203,248);
+			margin: 0 auto;
+			float: left;
+		}
+		.pannel{
+			width: 640px;
+			height: 50px;
+			background-color: rgb(46, 66, 198);
+		}
+		.html .pannel{
+			width: 720px;
+		}
+		.css .pannel,
+		.js .pannel,
+		.jq .pannel{
+			width: 680px;
+		}
+		#history h4{
+			color: #333;
+			font-size: 40px;
+			margin: 20px 0;
+		}
+		#history p{
+			font-size: 30px;
+			color: #eee;
+			margin-bottom: 10px;
+		}
+
+		.selected{
+			background-color: #333;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div id="info">
+			<div>
+				<img src="demo.jpg">
+				<h3>顾嘉诚</h3>
+				<p>期望职位：前端工程师</p>
+				<p><a href=""></a></p>
+			</div>
+		</div>
+		<div id="history">
+			<div>
+				<h3>教育背景及工作经历</h3>
+				<h4>教育背景</h4>
+				<p>天津大学仁爱学院</p>
+				<p>通信工程</p>
+				<p>2016年6月毕业</p>
+				<h4>工作经历</h4>
+				<p>2016.7 --- 2016.12</p>
+				<p>深圳市骏龙电子有限公司北京分公司</p>
+				<p>工作岗位：AE（应用工程师）</p>
+				<p>主要负责给乐视TV维护 MCU 代码，协调 BSP 组与硬件之间的调试工作</p>
+			</div>
+		</div>
+		<div id="project">
+			<div>
+				<h3>项目经验</h3>
+				<ul>
+					<li>
+						<a href="">
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-3"></use>
+							</svg>
+						</a>
+						<h4><a href="">日历</a></h4>
+						<p>简单的日历插件简单的日历插件简单的日历插件简单的日历插件简单的日历插件</p>
+					</li>
+					<li>
+						<a href="">
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-3"></use>
+							</svg>
+						</a>
+						<h4><a href="">日历</a></h4>
+						<p>简单的日历插件</p>
+					</li>
+					<li>
+						<a href="">
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-3"></use>
+							</svg>
+						</a>
+						<h4><a href="">日历</a></h4>
+						<p>简单的日历插件</p>
+					</li>
+					<li>
+						<a href="">
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-3"></use>
+							</svg>
+						</a>
+						<h4><a href="">日历</a></h4>
+						<p>简单的日历插件</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="skills">
+			<div>
+				<h3>擅长技术</h3>
+				<ul>
+					<li class="html">
+						<p class="lan">HTML</p>
+						<div class="pannel-ct">
+							<div class="pannel"></div>
+						</div>
+						<p class="percent">90%</p>
+					</li>
+					<li class="css">
+						<p class="lan">CSS</p>
+						<div class="pannel-ct">
+							<div class="pannel"></div>
+						</div>
+						<p class="percent">85%</p>
+					</li>
+					<li class="js">
+						<p class="lan">Javascript</p>
+						<div class="pannel-ct">
+							<div class="pannel"></div>
+						</div>
+						<p class="percent">85%</p>
+					</li>
+					<li class="jq">
+						<p class="lan">Jquery</p>
+						<div class="pannel-ct">
+							<div class="pannel"></div>
+						</div>
+						<p class="percent">85%</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<ul class="mark">
+			<li><a href="javascript:void(0)" class="selected"></a></li>
+			<li><a href="javascript:void(0)"></a></li>
+			<li><a href="javascript:void(0)"></a></li>
+			<li><a href="javascript:void(0)"></a></li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var fullPage = (function(){
+			var curIndex = 0,
+				isWheeling = false;
+
+			var winH = $(window).height();
+
+			setSize();
+			function setSize(){				
+				$('.main>div').height(winH);
+				$('.mark').css({
+					'top': winH / 2 - $('.mark').height() / 2
+				});
+			}
+
+			
+
+			function setSelected(){
+				$('.selected').removeClass('selected')
+				$('.mark li').eq(curIndex).children().addClass('selected');
+				$('body').animate({
+					'scrollTop': winH * curIndex
+				},500,function(){
+					setTimeout(function(){
+						isWheeling = false;
+					},300);
+				});
+			}
+
+			function bindEvent(){
+				$(window).on('wheel',function(e){
+					if(isWheeling){
+						e.preventDefault();
+						return ;
+					}
+					
+					var wheelDir = (e.originalEvent.deltaY > 0) ? "down" : "up";
+					if((wheelDir === 'down' && curIndex === 3) || (wheelDir === 'up' && curIndex === 0)){
+						return ;
+					}
+					isWheeling = true;
+					curIndex = (wheelDir === 'down') ? (curIndex + 1) : (curIndex - 1);
+					setSelected();
+					
+				});
+				$('.mark').on('click','a',function(e){
+					curIndex = $(this).parent().index();
+					setSelected();
+				});
+				$(window).on('resize',function(){
+					winH = $(window).height();
+					setSize();
+				});
+			}
+			return {
+				bindEvent: bindEvent
+			};
+
+		})();
+		
+		fullPage.bindEvent();
+	</script>
+</body>
+</html>
