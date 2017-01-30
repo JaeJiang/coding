@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>learn vue</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<section id="app">
+		<header>
+			<label v-bind:class="{checked: actionType==='signUp'}">
+				<input type="radio" name="loginOrSignup" v-model="actionType" value="signUp">
+				注册
+			</label>
+			|
+			<label v-bind:class="{checked: actionType==='login'}">
+				<input type="radio" name="loginOrSignup" v-model="actionType" value="login">
+				登陆
+			</label>
+		</header>
+		<div class="signup" v-if="actionType=='signUp'">
+			<form>
+				<div>
+					用户名
+					<input type="text" name="username">
+				</div>
+				<div>
+					密码
+					<input type="password" name="pwd">
+				</div>
+				<input type="submit" name="signup" value="注册">
+			</form>
+		</div>
+		<div class="login" v-if="actionType=='login'">
+			<form>
+				<div>
+					用户名
+					<input type="text" name="username">
+				</div>
+				<div>
+					密码
+					<input type="password" name="pwd">
+				</div>
+				<input type="submit" name="signup" value="登陆">
+			</form>
+		</div>
+	</section>
+
+	<script type="text/javascript" src="bundle.js"></script>
+</body>
+</html>

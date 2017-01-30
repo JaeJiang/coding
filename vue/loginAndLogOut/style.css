@@ -1,0 +1,60 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+a{
+	text-decoration: none;
+}
+body{
+	background-color: rgb(45,51,82)
+}
+
+section#app{
+	width: 300px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 200px;
+}
+header{
+	/*background-color: #ccc;*/
+	padding: 20px 0;
+	color: #ccc;
+}
+header label{
+	padding: 10px 15px;
+	margin: 0 20px;
+	cursor: pointer;
+	font-size: 20px;
+}
+.checked{
+	border-bottom: 3px solid #ccc;
+}
+header input[type="radio"]{
+	display: none;
+}
+form{
+	padding: 40px 50px;
+	background-color: white;
+	border-radius: 8px;
+}
+form div{
+	margin-bottom: 20px;
+	text-align: left;	
+	line-height: 20px;
+	color: #999;
+}
+form div input{
+	height: 20px;
+	float: right;
+	background-color: rgb(234,247,254);
+	border: 1px solid #ccc;
+}
+form>input{
+	padding: 10px 80px;
+	background-color: #B0E559;
+	border-radius: 20px;
+	border: none;
+	margin-top: 20px;
+	cursor: pointer;
+}

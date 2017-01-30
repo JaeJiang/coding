@@ -1,2 +1,4 @@
-# coding
-coding coding coding
+# Vue
+- install nodejs
+- install webpack
+- install vue
