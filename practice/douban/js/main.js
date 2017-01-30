@@ -12,5 +12,5 @@ requirejs(['jquery','randomplay','app/action'],function($,getSongsFM,bindEvent){
 	// console.log(getSongsFM)
 	getSongsFM;
 
-	bindEvent;
+	// bindEvent;
 });

@@ -2,12 +2,24 @@ define(['jquery','app/setlyric'],function($,synLyric){
 	var getSongsFM = (function(){
 		//获取电台
 		(function(){
+			URL: http://www.douban.com/j/app/login
 			$.ajax({
-				url: 'http://api.jirengu.com/fm/getChannels.php',
-				type: 'get',
+				url: 'http://www.douban.com/j/app/login',
+				type: 'post',
 				dataType: 'json',
+				data:{
+					app_name: 'radio_android',
+					version: 100,
+					email: '1737087925@qq.com',
+					password: '13962343405gjc'
+				},
+				headers: {
+					'Access-Control-Allow-Origin': '*',
+					'Content-Type': 'application/x-www-form-urlencoded'
+				},
 				success: function(data){
-					dealWith(data.channels);
+					console.log(data);
+					// dealWith(data.channels);
 				},
 				error: function(){
 					console.log('error...')
@@ -28,7 +40,7 @@ define(['jquery','app/setlyric'],function($,synLyric){
 //切换电台from control.js ------> 使得歌曲从相应电台得到 a 的 data-channel
 		//基础功能 自动播放歌曲
 		// 从指定电台获得歌曲
-		getRandomSongs();
+		// getRandomSongs();
 		function getRandomSongs(channel){
 			var channel = channel || 'public_aaa_bbb';
 

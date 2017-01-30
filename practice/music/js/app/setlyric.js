@@ -118,7 +118,10 @@ define(['jquery','app/event','randomplay'],function($,eventCenter,getSongsFM){
 							if(strTime === (strMin+':'+strSec)){
 								clearInterval(clock);
 								time = 0;
-								getSongsFM.getRandomSongs();
+								// getSongsFM.getRandomSongs();
+								console.log(getSongsFM)
+								console.log(getSongsFM.getRandomSongs)
+								console.log(getRandomSongs)
 							}
 						}
 					},1000);
