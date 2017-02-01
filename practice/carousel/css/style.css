@@ -127,6 +127,8 @@ section{
 
 .squee ul{
 	width: 1000px;
+	overflow: hidden;
+	height: 375px;
 }
 .squee ul:after{
 	content: '';

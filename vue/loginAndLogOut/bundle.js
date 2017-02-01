@@ -55,7 +55,10 @@
 	var app1 = new _vue2.default({
 		el: '#app',
 		data: {
-			actionType: 'signUp'
+			actionType: 'signUp',
+			imgSrc: 'demo.jpg',
+			username: '顾嘉诚',
+			infoList: []
 		}
 	});
 

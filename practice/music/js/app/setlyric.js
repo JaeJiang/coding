@@ -109,7 +109,8 @@ define(['jquery','app/event','randomplay'],function($,eventCenter,getSongsFM){
 						if(flag){
 
 							time ++;
-							$('input[type="range"]').val(time*100000/endTime);
+							$('input[type="range"]').val(Math.round(time*100000/endTime));
+							// console.log(Math.round(time*100000/endTime))
 							timeMin = Math.floor(time/60);
 							timeSec = Math.ceil(time - timeMin * 60);
 							if(timeMin<10 && timeSec<10){
@@ -127,7 +128,7 @@ define(['jquery','app/event','randomplay'],function($,eventCenter,getSongsFM){
 							$('.start').text(strTime);
 							// console.log(time)
 							if(strTime === (strMin+':'+strSec)){
-								console.log('over')
+								// console.log('over')
 								clearInterval(clock);
 								time = 0;
 								eventCenter.triggerEvent('playother');

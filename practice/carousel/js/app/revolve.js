@@ -53,19 +53,18 @@ define(['jquery'],function($){
 		];
 		layout();
 		$ct.height(60 + $(arr[0]).height())
+
 		function layout(){
-			temp.forEach(function(e,i,a){
-				for(var key in e){
-					$(arr[i]).animate({
-						width: e.width,
-						top: e.top,
-						left: e.left,
-						opacity: e.opacity,
-						'z-index': e['z-index']
-					},600,()=>{
-						lock = false;
-					})
-				}
+			arr.forEach(function(e,i,a){
+				$(e).animate({
+					'width': temp[i].width,
+					'top': temp[i].top,
+					'left': temp[i].left,
+					'opacity': temp[i].opacity,
+					'z-index': temp[i]['z-index']
+				},500,function(){
+					lock = false;
+				});
 			});
 		}
 		

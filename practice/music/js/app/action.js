@@ -4,7 +4,6 @@ define(['jquery','randomplay','app/event'],function($,getSongsFM,eventCenter){
 		var flag = false;
 
 		$('.info').on('mousedown','input',function(){
-			console.log('dosn')
 			$(this).on('mouseup',function(){
 				var nowTime = $(this).val();
 				eventCenter.triggerEvent('playOrStop',flag,nowTime);
@@ -67,20 +66,26 @@ define(['jquery','randomplay','app/event'],function($,getSongsFM,eventCenter){
 			
 			
 		});
-
+		//切换电台
 		$('.fm-classify').on('click','a',function(e){
 			$('audio').removeAttr('src');
 
 			var fm = $(e.target).data('channel');
+			if($('#fm article').hasClass('rshow')){
+				$('#fm article').removeClass('rshow');
+			}
 
 			getSongsFM.getRandomSongs(fm);
-			setTimeout(function(){
-				document.getElementsByTagName('audio')[0].play();
-				
-			},1000)
+			
 			$('#fm article').toggle();
 			$('#fm aside.fm-classify').toggle();
+			
+			$('input').val(0);
+			$('.pause').hide();
+			$('.play').show();
+			
 		});
+
 		function playOther(){
 			getSongsFM.getRandomSongs();
 

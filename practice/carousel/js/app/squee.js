@@ -3,20 +3,22 @@ define(['jquery'],function($){
 		var $ele;
 		var flag = false;
 		$ct.find('li').on('mouseenter',function(){
-			// console.log(this)
 			if(flag) return;
 			flag = true;
-			$(this).siblings().css({
+			
+			$(this).siblings().animate({
 				width: 50
+			},400,()=>{
+				
 			});
 			$(this).animate({
 				width: 800
-			},500,()=>{
+			},800,()=>{
 				flag = false;
 			});
+
 		});
 		$ct.find('ul').on('mouseleave',function(){
-			if(flag) return;
 			$(this).children().animate({
 				width: 200
 			},500);
