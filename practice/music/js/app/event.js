@@ -9,9 +9,9 @@ define([],function(){
 			});
 		}
 
-		function triggerEvent(evts,arg){
+		function triggerEvent(evts,arg,arg1){
 			// console.log(events)
-			events[evts][0].handler(arg);
+			events[evts][0].handler(arg,arg1);
 		}
 
 		function offEvent(evts){

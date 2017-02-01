@@ -7,6 +7,7 @@ define(['jquery','app/event','randomplay'],function($,eventCenter,getSongsFM){
 	//3.下／上一首 重新 randommusic.js 中 playRandomMusic ajax
 	var synLyric = (function(){
 		var lycArr = [];//对应时间的歌词
+		var nowLyc = '';
 		var theLastTime = 0;//歌曲结束时间
 		var song = document.getElementsByTagName('audio')[0];
 
@@ -33,6 +34,7 @@ define(['jquery','app/event','randomplay'],function($,eventCenter,getSongsFM){
 		}
 		//组成一个数组 key-value形式  arr[time] = lyric ---> arr['00:03'] = '两只老虎 两只老虎 跑的...'
 		function formLyric(arr){
+			lycArr = [];
 			var patt = /\[[0-9]{2}\:[0-9]{2}\.[0-9]{2}\]/g;
 			var theLast =  arr.length - 1;
 			while(arr[theLast] === ''){
@@ -43,16 +45,23 @@ define(['jquery','app/event','randomplay'],function($,eventCenter,getSongsFM){
 				var timeArr = e.match(patt);//时间组成的数组
 				if(timeArr){
 					var words = e.replace(timeArr.join(''),'');//歌词
-
-					for(var j = 0;j < timeArr.length;j ++){
-						lycArr[timeArr[j]] = words;
+					if(i === 0){
+						var pat = /, by 饥人谷/;
+						words = words.replace(pat,'');
 					}
+					// for(var j = 0;j < timeArr.length;j ++){
+					// 	lycArr[timeArr[j]] = words;
+					// }
 					for(var j = 0;j < timeArr.length;j ++){
 						lycArr[timeArr[j].substring(1,6)] = words;
 					}
 				}
 			});
 			// console.log(lycArr);//得到我们需要的歌词数组
+			$('.full-lyrics').text('');
+			for(var key in lycArr){
+				$('.full-lyrics').append($('<p>'+lycArr[key]+'</p>'))
+			}
 			getEndTime(theLastTime)
 		}
 		//获得最后结束的时间，以此得到一首歌的时间
@@ -85,12 +94,14 @@ define(['jquery','app/event','randomplay'],function($,eventCenter,getSongsFM){
 				strTime = '00:00';
 
 			$('.lyric').text(lycArr[strTime])
-			// console.log(endTime)
+			// console.log(strMin+':'+strSec)
 			clearInterval(clock);
-			eventCenter.onEvent('playOrStop',function(flg){
-				
-
-
+			eventCenter.onEvent('playOrStop',function(flg,arg){
+				if(arg){
+					time = Math.floor(arg * endTime / 100000);
+					song.currentTime = time;
+					// console.log(time);
+				}
 				var flag = flg || false;
 				clearInterval(clock);
 				if(flag){
@@ -116,12 +127,10 @@ define(['jquery','app/event','randomplay'],function($,eventCenter,getSongsFM){
 							$('.start').text(strTime);
 							// console.log(time)
 							if(strTime === (strMin+':'+strSec)){
+								console.log('over')
 								clearInterval(clock);
 								time = 0;
-								// getSongsFM.getRandomSongs();
-								console.log(getSongsFM)
-								console.log(getSongsFM.getRandomSongs)
-								console.log(getRandomSongs)
+								eventCenter.triggerEvent('playother');
 							}
 						}
 					},1000);
