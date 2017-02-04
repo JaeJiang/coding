@@ -175,15 +175,17 @@
 				var d = new Date();
 				var str = '';
 				console.log(d.getDate())
+
 				arr.forEach(function(e,i,a){
 
 					if(i % 7 === 0){
 						str += '<tr class="addEle">';
 					}
-					if(e === d.getDate() && d.getMonth() === month && d.getFullYear() === year){
-						str += '<td class="today"><a href="javascript:void(0)">' + e + '</a></td>';
-					}else if( i > (arr.length + theLastDay - 7) || i < theFirstDay){
+					
+					if( i > (arr.length + theLastDay - 7) || i < theFirstDay){
 						str += '<td class="exclude"><a href="javascript:void(0)">' + e + '</a></td>';
+					}else if((e === d.getDate()) && (d.getMonth() === month) && (d.getFullYear() === year)){
+						str += '<td class="today"><a href="javascript:void(0)">' + e + '</a></td>';
 					}else{
 						str += '<td><a href="javascript:void(0)">' + e + '</a></td>';
 					}
@@ -191,7 +193,7 @@
 						str += '</tr>';
 					}
 				});
-				// console.log(str)
+
 				$('caption span').text(year + '年' + (month + 1) + '月');	
 				$('table').append($(str));
 			}

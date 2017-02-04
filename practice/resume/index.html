@@ -10,7 +10,7 @@
 			margin: 0;
 			padding: 0;
 		}
-		li{
+		ul li{
 			list-style: none;
 		}
 		a{
@@ -27,11 +27,14 @@
 		body{
 			overflow: hidden;
 			font-family: "Microsoft YaHei",sans-serif;
-			
+			background-color: #22c3aa;
 		}
 
-		.main>div{
-			background-color: rgb(71,185,154);
+		.main{
+			width: 1200px;
+			margin: 0 auto;
+		}
+		.main>div{			
 			text-align: center;
 			/*position: relative;*/
 			display: table;
@@ -143,14 +146,14 @@
 		.pannel-ct{
 			height: 50px;
 			width: 800px;
-			background-color: rgb(104,203,248);
+			background-color: #ccc;
 			margin: 0 auto;
 			float: left;
 		}
 		.pannel{
 			width: 640px;
 			height: 50px;
-			background-color: rgb(46, 66, 198);
+			background-color: #444;
 		}
 		.html .pannel{
 			width: 720px;
@@ -174,6 +177,29 @@
 		.selected{
 			background-color: #333;
 		}
+		.resume ul{
+			width: 300px;
+			/*border: 1px solid #333;*/
+			margin: 0 auto;
+			margin-bottom: 50px;
+		}
+		.resume ul>li{
+			display: inline-block;
+			background-color: #37ddc4;
+			padding: 5px;
+			margin-bottom: 5px;
+			border-radius: 5px;
+			cursor: pointer;
+			color: #fff;
+		}
+		.resume ol>li{
+			text-align: left;
+			width: 800px;
+			margin: 0 auto;
+			color: #fff;
+			font-size: 20px;
+			margin-bottom: 10px;
+		}
 	</style>
 </head>
 <body>
@@ -182,23 +208,84 @@
 			<div>
 				<img src="demo.jpg">
 				<h3>顾嘉诚</h3>
+				<p>学历：本科</p>
 				<p>期望职位：前端工程师</p>
-				<p><a href=""></a></p>
+				<p>期望薪资：6-8K(具体可以面议)</p>
+				<p>邮箱：gujiacheng94@163.com</p>
+				<p>联系电话：15620621625</p>
+				<p><a href="https://github.com/Hunter-Gu/coding">Github</a></p>
+				<p><a href="http://www.jianshu.com/u/c908d13ff468">博客</a></p>
 			</div>
 		</div>
 		<div id="history">
 			<div>
-				<h3>教育背景及工作经历</h3>
-				<h4>教育背景</h4>
-				<p>天津大学仁爱学院</p>
-				<p>通信工程</p>
-				<p>2016年6月毕业</p>
-				<h4>工作经历</h4>
+				<h3>工作经历</h3>
 				<p>2016.7 --- 2016.12</p>
 				<p>深圳市骏龙电子有限公司北京分公司</p>
 				<p>工作岗位：AE（应用工程师）</p>
 				<p>主要负责给乐视TV维护 MCU 代码，协调 BSP 组与硬件之间的调试工作</p>
 			</div>
+		</div>
+		<div id="skills">
+			<div>
+				<h3>擅长技术</h3>
+				<ul>
+					<li class="html">
+						<p class="lan">HTML</p>
+						<div class="pannel-ct">
+							<div class="pannel"></div>
+						</div>
+						<p class="percent">90%</p>
+					</li>
+					<li class="css">
+						<p class="lan">CSS</p>
+						<div class="pannel-ct">
+							<div class="pannel"></div>
+						</div>
+						<p class="percent">85%</p>
+					</li>
+					<li class="js">
+						<p class="lan">Javascript</p>
+						<div class="pannel-ct">
+							<div class="pannel"></div>
+						</div>
+						<p class="percent">85%</p>
+					</li>
+					<li class="jq">
+						<p class="lan">Jquery</p>
+						<div class="pannel-ct">
+							<div class="pannel"></div>
+						</div>
+						<p class="percent">85%</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="resume">
+			<div>
+				<ul>
+					<li>HTML/HTML5</li>
+					<li>CSS/CSS3</li>
+					<li>Vue</li>
+					<li>Ajax</li>
+					<li>Requirejs</li>
+					<li>JSONP/CORS</li>
+					<li>jQuery</li>
+					<li>webpack</li>
+					<li>Git</li>
+					<li>Linux</li>
+				</ul>
+				<ol>
+					<li>能够熟练开发符合 W3C 标准的页面。</li>
+					<li>能够通过 chrome 等主流浏览器进行开发调试，可以解决一些浏览器的兼容问题。</li>
+					<li>熟练使用 html，css，原生js， jQuery 等主流技术进行开发。</li>
+					<li>了解一些常见的布局，知道盒模型，浮动定位以及 BFC 等特性。</li>
+					<li>可以通过 git 进行一些简单的提交工作，了解一些 linux 命令行。</li>
+					<li>了解一些 HTML5 以及 CSS3，可以实现一些简单的效果。</li>
+					<li>代码可读性良好。</li>
+					<li>了解一些 vue 的使用。</li>
+				</ol>
+			</div>  
 		</div>
 		<div id="project">
 			<div>
@@ -243,43 +330,9 @@
 				</ul>
 			</div>
 		</div>
-		<div id="skills">
-			<div>
-				<h3>擅长技术</h3>
-				<ul>
-					<li class="html">
-						<p class="lan">HTML</p>
-						<div class="pannel-ct">
-							<div class="pannel"></div>
-						</div>
-						<p class="percent">90%</p>
-					</li>
-					<li class="css">
-						<p class="lan">CSS</p>
-						<div class="pannel-ct">
-							<div class="pannel"></div>
-						</div>
-						<p class="percent">85%</p>
-					</li>
-					<li class="js">
-						<p class="lan">Javascript</p>
-						<div class="pannel-ct">
-							<div class="pannel"></div>
-						</div>
-						<p class="percent">85%</p>
-					</li>
-					<li class="jq">
-						<p class="lan">Jquery</p>
-						<div class="pannel-ct">
-							<div class="pannel"></div>
-						</div>
-						<p class="percent">85%</p>
-					</li>
-				</ul>
-			</div>
-		</div>
 		<ul class="mark">
 			<li><a href="javascript:void(0)" class="selected"></a></li>
+			<li><a href="javascript:void(0)"></a></li>
 			<li><a href="javascript:void(0)"></a></li>
 			<li><a href="javascript:void(0)"></a></li>
 			<li><a href="javascript:void(0)"></a></li>
@@ -323,7 +376,7 @@
 					}
 					
 					var wheelDir = (e.originalEvent.deltaY > 0) ? "down" : "up";
-					if((wheelDir === 'down' && curIndex === 3) || (wheelDir === 'up' && curIndex === 0)){
+					if((wheelDir === 'down' && curIndex === 4) || (wheelDir === 'up' && curIndex === 0)){
 						return ;
 					}
 					isWheeling = true;
