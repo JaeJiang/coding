@@ -11,80 +11,91 @@
 </head>
 <body>
 	<div id="app">
-		<section class="a">
-			<header>
-				<label v-bind:class="{checked: actionType==='signUp'}">
-					<input type="radio" name="loginOrSignup" v-model="actionType" value="signUp">
-					注册
-				</label>
-				|
-				<label v-bind:class="{checked: actionType==='login'}">
-					<input type="radio" name="loginOrSignup" v-model="actionType" value="login">
-					登陆
-				</label>
-			</header>
-			<div class="signup" v-if="actionType=='signUp'">
-				<form>
-					<div>
-						用户名
-						<input type="text" name="username">
-					</div>
-					<div>
-						密码
-						<input type="password" name="pwd">
-					</div>
-					<input type="submit" name="signup" value="注册">
-				</form>
-			</div>
-			<div class="login" v-if="actionType=='login'">
-				<form>
-					<div>
-						用户名
-						<input type="text" name="username">
-					</div>
-					<div>
-						密码
-						<input type="password" name="pwd">
-					</div>
-					<input type="submit" name="signup" value="登陆">
-				</form>
-			</div>
-		</section>
+		<div v-bind:class="{page: !status}">
+			<section v-if="!status" class="a">
+				<header>
+					<label v-bind:class="{checked: actionType==='signUp'}">
+						<input type="radio" name="loginOrSignup" v-model="actionType" value="signUp">
+						注册
+					</label>
+					|
+					<label v-bind:class="{checked: actionType==='login'}">
+						<input type="radio" name="loginOrSignup" v-model="actionType" value="login">
+						登录
+					</label>
+				</header>
+				<div class="signup" v-if="actionType=='signUp'" v-on:submit.prevent="signUp">
+					<form>
+						<div>
+							用户名
+							<input type="text" name="username" v-model="username">
+						</div>
+						<div>
+							密码
+							<input type="password" name="pwd"  v-model="password">
+						</div>
+						<input type="submit" name="signup" value="注册">
+					</form>
+				</div>
+				<div class="login" v-if="actionType=='login'" v-on:submit.prevent="login">
+					<form>
+						<div>
+							用户名
+							<input type="text" name="username" v-model="username">
+						</div>
+						<div>
+							密码
+							<input type="password" name="pwd" v-model="password">
+						</div>
+						<input type="submit" name="signup" value="登录">
+					</form>
+				</div>
+			</section>
+		</div>
 
-		<section>
-			<nav>
+		<section v-if="status">
+			<nav v-bind:class="{stick: true}">
 				<div class="layout">
 					<ul>
 						<li><a href="javascript:void(0)">首页</a></li>
 						<li><a href="javascript:void(0)">照片</a></li>
+						<li v-bind:class="{logout: true}"><a href="javascript:void(0)" v-on:click="logout">登出</a></li>
 					</ul>
 				</div>
 			</nav>
 			<div class="layout">
-				<div class="remind">
-					<svg class="icon" aria-hidden="true">
-					  <use xlink:href="#icon-liebiao"></use>
-					</svg>
-					最新消息
-				</div>
-				<div class="info">
-					<div class="msg">
-						<img v-bind:src="imgSrc">
-						<span>{{ username }}</span>
-						<time>2017-1-31</time>
+				<div class="main">
+					<div class="remind">
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-liebiao"></use>
+						</svg>
+						最新消息
+						<a href="javascript:void(0)" class="promote" v-on:click="launch=!launch">发表消息</a>
 					</div>
-					<p>1234</p>
+					<div class="info" v-for="info in infoList">
+						<div class="msg">
+							<img v-bind:src="imgSrc">
+							<span>{{ currentUser.username }}</span>
+							<time>{{ info.launchTime }}</time>
+						</div>
+						<p>{{ info.launchContent }}</p>
+					</div>
 				</div>
-				
+				<aside>
+					<img v-bind:src="imgSrc">
+					<p>用户名：{{ currentUser.username }}</p>
+				</aside>
 			</div>
-			<div class="launch">
+
+			<div class="launch" v-if="launch">
 				<h1>输入你想发表的内容...</h1>
-				<textarea></textarea>
-				<div><a href="javascript:void(0)">回复</a></div>
+				<textarea v-model="content"></textarea>
+				<div><a href="javascript:void(0)" v-on:click="addInfo">回复</a></div>
 			</div>
 
 		</section>
 	</div>
+	
 
 	<script type="text/javascript" src="bundle.js"></script>
 </body>

@@ -15,9 +15,18 @@ li{
    fill: currentColor;
    overflow: hidden;
 }
-
 body{
-	/*background-color: rgb(45,51,82)*/
+	background-image: url(bg-b.png);
+}
+
+
+.page{
+	background-color: rgb(45,51,82);
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 }
 
 section.a{
@@ -72,9 +81,6 @@ form>input{
 	cursor: pointer;
 }
 /*---------------------------*/
-.a{
-	display: none;
-}
 .layout{
 	width: 1000px;
 	margin: 0 auto;
@@ -82,6 +88,10 @@ form>input{
 }
 section nav{
 	background-color: rgb(71,185,154);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 6;
 }
 section nav ul:after{
 	content: '';
@@ -93,9 +103,11 @@ section nav ul li{
 	height: 50px;
 	line-height: 50px;
 }
+section nav ul li.logout{
+	float: right;
+}
 
 .layout div.remind{
-	margin-top: 50px;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #777;
 	color: #777;
@@ -107,7 +119,7 @@ section nav ul li{
 
 .info{
 	margin-top: 20px;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #bbb;
 }
 .msg{
 	line-height: 30px;
@@ -138,6 +150,12 @@ section nav ul li{
 	margin: 20px 0;
 }
 
+a.promote{
+	float: right;
+	color: #333;
+	border: 1px solid #888;
+	padding: 5px;
+}
 div.launch{
 	position: fixed;
 	bottom: 0;
@@ -160,4 +178,35 @@ div.launch{
 }
 .launch div{
 	text-align: right;
+}
+
+section>div.layout{
+	padding-top: 100px;
+}
+section>div.layout:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+section>div.layout>.main{
+	width: 100%;
+	float: left;
+}
+section>div.layout>.main>div{
+	margin-right: 220px;
+}
+section>div.layout>aside{
+	width: 190px;
+	float: left;
+	border: 1px solid #888;
+	margin-left: -192px;
+	position: relative;
+	text-align: center;
+}
+section>div.layout>aside img{
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	border: 1px solid #ccc;
+	margin-top: 10px;
 }
