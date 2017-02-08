@@ -27,7 +27,7 @@
 		body{
 			overflow: hidden;
 			font-family: "Microsoft YaHei",sans-serif;
-			background-color: #22c3aa;
+			background-color: #17af97;
 		}
 
 		.main{
@@ -68,6 +68,15 @@
 			color: #fff;
 			font-size: 50px;
 			padding: 30px 0;
+			margin-bottom: 30px;
+		}
+		h3 a{
+			color: #eee;
+			font-size: 20px;
+			background-color: #37ddc4;
+			border-radius: 5px;
+			margin-left: 10px;
+			padding: 3px;
 		}
 /*		.main>div>div>p{
 			color: #ddd;
@@ -88,11 +97,14 @@
 		#info p{
 			color: #fff;
 			font-size: 25px;
-			margin-bottom: 5px;
+			margin-bottom: 10px;
 		}
 		#info a{
 			color: #eee;
 			margin-right: 10px;
+			padding: 3px;
+			border-radius: 5px;
+			background-color: #37ddc4;
 		}
 
 		.main>#project>div>ul{
@@ -108,18 +120,18 @@
 			float: left;
 			width: 600px;
 			text-align: left;
-			margin-bottom: 20px;
+			margin-bottom: 40px;
 		}
 		.main>#project>div>ul>li>a{
 			color: #fff;
-			font-size: 60px;
+			font-size: 50px;
 			border-radius: 50%;
 			background-color: rgba(100,100,100,0.5);
-			padding: 20px;
+			padding: 15px;
 			display: block;
 			float: left;
-			width: 60px;
-			height: 60px;
+			width: 50px;
+			height: 50px;
 			margin: 0 50px;
 		}
 		.main>#project>div>ul>li>h4>a{
@@ -216,6 +228,42 @@
 			font-size: 20px;
 			margin-bottom: 10px;
 		}
+
+		#vue-music div.pic{
+			text-align: right;
+			float: left;
+			width: 50%;
+		}
+		#vue-music img{
+			width: 500px;
+			margin-right: 100px;
+		}
+		#vue-music div.describe{
+			text-align: left;
+			float: left;
+			width: 50%;
+		}
+		#vue-music div.describe>div{
+			margin-bottom: 20px;
+		}
+		#vue-music div.describe>div:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		#vue-music div.describe h4{
+			float: left;
+			font-size: 25px;
+			color: #eee;
+			margin-bottom: 15px;
+		}
+		#vue-music div.describe p{
+			width: 450px;
+			line-height: 25px;
+			float: left;
+			font-size: 20px;
+			color: rgb(243,235,235);
+		}
 	</style>
 </head>
 <body>
@@ -226,20 +274,74 @@
 				<h3>姓名：顾嘉诚</h3>
 				<p>学历：本科</p>
 				<p>期望职位：前端工程师</p>
-				<p>期望薪资：6-8K(具体可以面议)</p>
+				<p>期望薪资：7k - 10k</p>
 				<p>邮箱：gujiacheng94@163.com</p>
 				<p>联系电话：15620621625</p>
-				<a href="https://github.com/Hunter-Gu/coding">Github</a>
-				<a href="http://www.jianshu.com/u/c908d13ff468">博客</a>
+				<a href="https://github.com/Hunter-Gu/coding" target="_blank">Github</a>
+				<a href="http://www.jianshu.com/u/c908d13ff468" target="_blank">博客</a>
 			</div>
 		</div>
-		<div id="history">
+		<div id="project">
 			<div>
-				<h3>工作经历</h3>
-				<p>2016.7 --- 2016.12</p>
-				<p>深圳市骏龙电子有限公司北京分公司</p>
-				<p>工作岗位：AE（应用工程师）</p>
-				<p>主要负责给乐视TV维护 MCU 代码，协调 BSP 组与硬件之间的调试工作</p>
+				<h3>项目经验</h3>
+				<ul>
+					<li>
+						<a href="file:///Users/gu/Desktop/new/coding/practice/carousel/index.html" target="_blank">
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-3"></use>
+							</svg>
+						</a>
+						<h4><a  href="file:///Users/gu/Desktop/new/coding/practice/carousel/index.html" target="_blank">轮播图</a></h4>
+						<p>几种常见的轮播图效果</p>
+					</li>
+					<li>
+						<a href="https://hunter-gu.github.io/coding/practice/date-picker/index.html" target="_blank">
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-3"></use>
+							</svg>
+						</a>
+						<h4><a href="https://hunter-gu.github.io/coding/practice/date-picker/index.html" target="_blank">日历</a></h4>
+						<p>简单的日历插件</p>
+					</li>
+					<li>
+						<a href="http://couzin_gu.coding.me/Demo/music/index.html" target="_blank">
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-3"></use>
+							</svg>
+						</a>
+						<h4><a href="http://couzin_gu.coding.me/Demo/music/index.html" target="_blank">简单的音乐播放器</a></h4>
+						<p>可以进行简单的播放，下一首，切换电台等功能的简单的音乐播放器</p>
+					</li>
+					<li>
+						<a href="https://hunter-gu.github.io/coding/practice/info-list/info-list.html"  target="_blank">
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-3"></use>
+							</svg>
+						</a>
+						<h4><a href="https://hunter-gu.github.io/coding/practice/info-list/info-list.html"  target="_blank">信息收集表</a></h4>
+						<p>可以进行简单的输入验证</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="vue-music">
+			<div>
+				<h3>基于 Vue 的音乐播放器<a href="http://couzin_gu.coding.me/Demo/vue-music/page.html" target="_blank">预览</a></h3>
+				<div class="pic"><img src="work-1.png"></div>
+				<div class="describe">
+					<div>
+						<h4>使用技术： </h4>
+						<p>Vue， webpack， 原生 js， ajax， HTML5</p>
+					</div>
+					<div>
+						<h4>项目描述：</h4>
+						<p>可以进行歌曲的暂停与播放，对歌曲的播放进度进行调节，并对歌词进行同步。播放上一首或者下一首时，获取的都是随机歌曲。可以进行音量的控制，满足一个基本的音乐播放器的功能。</p>
+					</div>
+					<div>
+						<h4>实现细节： </h4>
+						<p>通过 HTML5 的 audio 标签，可以将音频嵌入到 HTML 中，并通过该标签提供的一些属性和方法，可以实现开始、暂停以及对音量进行调节等功能。歌词同步可以根据当前播放的进度与歌词的时间戳来实现。将歌词放入数组中，通过 vue 的 v-for 将数组中的内容渲染到页面上，需要改变页面上的歌词时，只需要将数组的内容改变即可。</p>
+					</div>					
+				</div>
 			</div>
 		</div>
 		<div id="skills">
@@ -303,47 +405,14 @@
 				</ol>
 			</div>  
 		</div>
-		<div id="project">
+		
+		<div id="history">
 			<div>
-				<h3>项目经验</h3>
-				<ul>
-					<li>
-						<a href="file:///Users/gu/Desktop/new/coding/practice/carousel/index.html" target="_blank">
-							<svg class="icon" aria-hidden="true">
-							  <use xlink:href="#icon-3"></use>
-							</svg>
-						</a>
-						<h4><a  href="file:///Users/gu/Desktop/new/coding/practice/carousel/index.html" target="_blank">轮播图</a></h4>
-						<p>几种常见的轮播图效果</p>
-					</li>
-					<li>
-						<a href="https://hunter-gu.github.io/coding/practice/date-picker/index.html" target="_blank">
-							<svg class="icon" aria-hidden="true">
-							  <use xlink:href="#icon-3"></use>
-							</svg>
-						</a>
-						<h4><a href="https://hunter-gu.github.io/coding/practice/date-picker/index.html" target="_blank">日历</a></h4>
-						<p>简单的日历插件</p>
-					</li>
-					<li>
-						<a href="http://couzin_gu.coding.me/Demo/music/index.html" target="_blank">
-							<svg class="icon" aria-hidden="true">
-							  <use xlink:href="#icon-3"></use>
-							</svg>
-						</a>
-						<h4><a href="http://couzin_gu.coding.me/Demo/music/index.html" target="_blank">简单的音乐播放器</a></h4>
-						<p>可以进行简单的播放，下一首，切换电台等功能的简单的音乐播放器</p>
-					</li>
-					<li>
-						<a href="https://hunter-gu.github.io/coding/practice/info-list/info-list.html"  target="_blank">
-							<svg class="icon" aria-hidden="true">
-							  <use xlink:href="#icon-3"></use>
-							</svg>
-						</a>
-						<h4><a href="https://hunter-gu.github.io/coding/practice/info-list/info-list.html"  target="_blank">信息收集表</a></h4>
-						<p>可以进行简单的输入验证</p>
-					</li>
-				</ul>
+				<h3>工作经历</h3>
+				<p>2016.7 --- 2016.12</p>
+				<p>深圳市骏龙电子有限公司北京分公司</p>
+				<p>工作岗位：AE（应用工程师）</p>
+				<p>主要负责给乐视TV维护 MCU 代码，协调 BSP 组与硬件之间的调试工作</p>
 			</div>
 		</div>
 		<ul class="mark">
@@ -352,7 +421,9 @@
 			<li><a href="javascript:void(0)"></a></li>
 			<li><a href="javascript:void(0)"></a></li>
 			<li><a href="javascript:void(0)"></a></li>
+			<li><a href="javascript:void(0)"></a></li>
 		</ul>
+
 	</div>
 
 	<script type="text/javascript">
@@ -392,7 +463,7 @@
 					}
 					
 					var wheelDir = (e.originalEvent.deltaY > 0) ? "down" : "up";
-					if((wheelDir === 'down' && curIndex === 4) || (wheelDir === 'up' && curIndex === 0)){
+					if((wheelDir === 'down' && curIndex === 5) || (wheelDir === 'up' && curIndex === 0)){
 						return ;
 					}
 					isWheeling = true;
