@@ -26,7 +26,7 @@
 
 		body{
 			overflow: hidden;
-			font-family: "Microsoft YaHei",sans-serif;
+			font-family: PingFangSC-Regular, "Microsoft YaHei",sans-serif;
 			background-color: #17af97;
 		}
 
@@ -134,6 +134,7 @@
 			width: 50px;
 			height: 50px;
 			margin: 0 50px;
+			line-height: 50px;
 		}
 		.main>#project>div>ul>li>h4>a{
 			font-size: 30px;
@@ -159,11 +160,11 @@
 			width: 200px;
 			text-align: left;
 		}
-		.main>#skills>div>ul>li>p.percent{
-			line-height: 50px;
-			color: #fff;
-			font-size: 30px;
-		}
+/*.main>#skills>div>ul>li>p.percent{
+	line-height: 50px;
+	color: #fff;
+	font-size: 30px;
+}*/
 		.main>#skills>div>ul>li:after{
 			content: '';
 			display: block;
@@ -177,14 +178,14 @@
 		.pannel-ct{
 			height: 50px;
 			width: 800px;
-			background-color: #ccc;
+			background-color: rgb(240, 236, 236);
 			margin: 0 auto;
 			float: left;
 		}
 		.pannel{
 			width: 640px;
 			height: 50px;
-			background-color: #444;
+			background-color: #333;
 		}
 		.html .pannel{
 			width: 720px;
@@ -199,10 +200,19 @@
 			font-size: 40px;
 			margin: 20px 0;
 		}
+		#history div>div{
+			text-align: left;
+			max-width: 600px;
+			margin: 0 auto;
+		}
 		#history p{
+			font-size: 20px;
+			color: #ccc;
+			margin-bottom: 10px;
+		}
+		#history p.time{
 			font-size: 30px;
 			color: #eee;
-			margin-bottom: 10px;
 		}
 
 		.selected{
@@ -241,26 +251,26 @@
 			width: 500px;
 			margin-right: 100px;
 		}
-		#vue-prj div.describe{
+		#vue-prj ul.describe{
 			text-align: left;
 			float: left;
 			width: 50%;
 		}
-		#vue-prj div.describe>div{
+		#vue-prj ul.describe>li{
 			margin-bottom: 20px;
 		}
-		#vue-prj div.describe>div:after{
+		#vue-prj ul.describe>li:after{
 			content: '';
 			display: block;
 			clear: both;
 		}
-		#vue-prj div.describe h4{
+		#vue-prj ul.describe h4{
 			float: left;
 			font-size: 25px;
 			color: #eee;
 			margin-bottom: 15px;
 		}
-		#vue-prj div.describe p{
+		#vue-prj ul.describe p{
 			width: 450px;
 			line-height: 25px;
 			float: left;
@@ -274,12 +284,11 @@
 		<div id="info">
 			<div>
 				<img src="demo.jpg">
-				<h3>姓名：顾嘉诚</h3>
-				<p>学历：本科</p>
-				<p>期望职位：前端工程师</p>
+				<h3>顾嘉诚</h3>
+				<p>本科毕业 | 前端工程师</p>
 				<!-- <p>期望薪资：10k</p> -->
-				<p>邮箱：gujiacheng94@163.com</p>
-				<p>联系电话：15620621625</p>
+				<p>gujiacheng94@163.com</p>
+				<p>15620621625</p>
 				<a href="https://github.com/Hunter-Gu/coding" target="_blank">Github</a>
 				<a href="http://www.jianshu.com/u/c908d13ff468" target="_blank">博客</a>
 			</div>
@@ -288,41 +297,41 @@
 			<div>
 				<h3>基于 Vue 的音乐播放器<a href="http://couzin_gu.coding.me/Demo/vue-music/page.html" target="_blank">预览</a></h3>
 				<div class="pic"><img src="work-1.png"></div>
-				<div class="describe">
-					<div>
+				<ul class="describe">
+					<li>
 						<h4>使用技术： </h4>
-						<p>Vue， webpack， 原生 js， ajax， HTML5</p>
-					</div>
-					<div>
+						<p>Vue、 Webpack、 JS、 AJAX、 HTML5</p>
+					</li>
+					<li>
 						<h4>项目描述：</h4>
 						<p>可以进行歌曲的暂停与播放，对歌曲的播放进度进行调节，并对歌词进行同步。播放上一首或者下一首时，获取的都是随机歌曲。可以进行音量的控制，满足一个基本的音乐播放器的功能。</p>
-					</div>
-					<div>
+					</li>
+					<li>
 						<h4>实现细节： </h4>
 						<p>通过 HTML5 的 audio 标签，可以将音频嵌入到 HTML 中，并通过该标签提供的一些属性和方法，可以实现开始、暂停以及对音量进行调节等功能。歌词同步可以根据当前播放的进度与歌词的时间戳来实现。将歌词放入数组中，通过 vue 的 v-for 将数组中的内容渲染到页面上，需要改变页面上的歌词时，只需要将数组的内容改变即可。</p>
-					</div>					
-				</div>
+					</li>					
+				</ul>
 			</div>
 		</div>
 		<div id="vue-prj">
 			<div>
 				<h3>基于 Vue 的照片墙<a href="http://hunter.github.me/vue/picture-wall/page.html" target="_blank">预览</a></h3>
 				<div class="pic"><img src="work-2.png"></div>
-				<div class="describe">
-					<div>
+				<ul class="describe">
+					<li>
 						<h4>使用技术： </h4>
-						<p>Vue， webpack， 原生 js， LeanCloud</p>
-					</div>
-					<div>
+						<p>Vue、 Webpack、 JS、 LeanCloud</p>
+					</li>
+					<li>
 						<h4>项目描述：</h4>
 						<p>可以通过上传图片，以及发表文字，对页面的内容进行添加。</p>
-					</div>
-					<div>
+					</li>
+					<li>
 						<h4>实现细节： </h4>
 						<p>阅读 leanCloud 的文档，通过使用 leanCloud 提供的js api，实现登陆 以及注册功能，这样便不需要通过后台来实现。注册/登陆后，可以上传图片以及写上一段对应的文字，在刷新页面 或者 重新登录后，内容不会消失。
 						通过原生 js 对图片以及对应文字实现瀑布流布局，看起来比较美观。</p>
-					</div>					
-				</div>
+					</li>					
+				</ul>
 			</div>
 		</div>
 		<div id="project">
@@ -336,8 +345,8 @@
 							</svg>
 						</a>
 						<h4><a href="https://hunter-gu.github.io/coding/practice/info-list/info-list.html"  target="_blank">信息收集表</a></h4>
-						<p>使用技术: jQuery， javascript</p>
-						<p>通过对输入框设置最大输入长度来实现对输入的字数的限制。超过最大限制数后就无法输入。通过正则表达式，如果输入的内容有误，则会报错并且无法提交。一定要把所有信息都填写完整并且无误后，才可以实现正常的提交。</p>
+						<p>使用技术: jQuery、 JS</p>
+						<p>实现了活动页面的信息收集表，可以对用户输入的内容进行简单的验证，以及提交的工作。</p>
 					</li>
 					<li>
 						<a href="https://hunter-gu.github.io/coding/practice/date-picker/index.html" target="_blank">
@@ -346,8 +355,8 @@
 							</svg>
 						</a>
 						<h4><a href="https://hunter-gu.github.io/coding/practice/date-picker/index.html" target="_blank">日历</a></h4>
-						<p>使用技术: jQuery， javascript</p>
-						<p>通过 Date 对象获取当前月的一些信息以及上一个月和下一个月的信息，通过 js 中的数组，并进行一些操作后，呈现在页面上。</p>
+						<p>使用技术: jQuery、 JS</p>
+						<p>实现了很多场景下很常见的日历插件，可以查看相应年的日期；可扩展选择日期等功能。</p>
 					</li>
 					<li>
 						<a href="http://couzin_gu.coding.me/Demo/music/index.html" target="_blank">
@@ -356,8 +365,8 @@
 							</svg>
 						</a>
 						<h4><a href="http://couzin_gu.coding.me/Demo/music/index.html" target="_blank">简单的音乐播放器</a></h4>
-						<p>使用技术: jQuery, ajax, HTML5, rem</p>
-						<p>通过从后台得到的数据，将数据按照一定的格式进行解析，得到所需的歌曲信息。包括歌手、歌名、以及歌曲对应的 sid 一词用来得到对应的歌词。通过 HTML5 的 audio 标签，可以将音频嵌入到 HTML 中，并通过该标签提供的一些属性和方法，可以实现开始、暂停以及对音量进 行调节等功能。通过 rem 布局，实现移动端的适配。</p>
+						<p>使用技术: jQuery、 AJAX、 HTML5、 rem</p>
+						<p>可以进行歌曲的切换，以及选择电台的功能，可以查看歌曲的歌词。</p>
 					</li>
 					<li>
 						<a href="file:///Users/gu/Desktop/new/coding/practice/carousel/index.html" target="_blank">
@@ -366,8 +375,8 @@
 							</svg>
 						</a>
 						<h4><a  href="file:///Users/gu/Desktop/new/coding/practice/carousel/index.html" target="_blank">轮播图</a></h4>
-						<p>使用技术： requirejs, jQuery</p>
-						<p>通过 requirejs 实现模块化开发。通过 jQuery 实现 DOM 元素的获取、样式和宽高的改变以及设置相应的位置信息，来实现想要的效 果，添加 stickup 功能，实现顶部导航栏的 stickup 效果；添加回到顶部的功能，点击后可实现回到顶部的效果。</p>
+						<p>使用技术： requirejs、 jQuery</p>
+						<p>通过模块化实现。具体有三种轮播效果，stickup 以及回到顶部等功能。</p>
 					</li>
 				</ul>
 			</div>
@@ -382,28 +391,24 @@
 						<div class="pannel-ct">
 							<div class="pannel"></div>
 						</div>
-						<p class="percent">90%</p>
 					</li>
 					<li class="css">
 						<p class="lan">CSS</p>
 						<div class="pannel-ct">
 							<div class="pannel"></div>
 						</div>
-						<p class="percent">85%</p>
 					</li>
 					<li class="js">
 						<p class="lan">Javascript</p>
 						<div class="pannel-ct">
 							<div class="pannel"></div>
 						</div>
-						<p class="percent">85%</p>
 					</li>
 					<li class="jq">
-						<p class="lan">Jquery</p>
+						<p class="lan">jQuery</p>
 						<div class="pannel-ct">
 							<div class="pannel"></div>
 						</div>
-						<p class="percent">85%</p>
 					</li>
 				</ul>
 			</div>
@@ -423,13 +428,13 @@
 					<li>Linux</li>
 				</ul>
 				<ol>
-					<li>熟练使用 html，css，原生js， jQuery 等主流技术进行开发。</li>
-					<li>熟练使用 jQuery，requirejs 等主流库，了解一些主流框架如 Vue。</li>
-					<li>理解一些关于跨域的内容，如 JSONP， CORS。</li>
-					<li>了解一些常见的布局，知道盒模型，浮动定位以及 BFC 等特性。</li>
-					<li>了解一些 vue 的使用，可以通过 webpack 进行一些简单的配置工作来开始Vue项的开发。</li>
-					<li>可以通过 git 进行一些简单的提交工作，了解一些 linux 命令行。</li>
-					<li>了解一些 HTML5 以及 CSS3，有实现一些简单效果的经验。</li>
+					<li>熟练使用 HTML、CSS、JS、jQuery 等主流技术进行开发。</li>
+					<li>熟练使用 jQuery、 requirejs 等主流库，了解一些主流框架如 Vue。</li>
+					<li>理解关于跨域的内容，如 JSONP、 CORS。</li>
+					<li>了解常见的布局，知道盒模型，浮动定位以及 BFC 等特性。</li>
+					<li>了解 Vue 的使用，可以通过 webpack 进行简单的配置工作来开始Vue项的开发。</li>
+					<li>了解 Linux 命令行，可以通过 git 进行简单的提交工作。</li>
+					<li>了解 HTML5、 CSS3，有实现简单效果的经验。</li>
 				</ol>
 			</div>  
 		</div>
@@ -437,10 +442,12 @@
 		<div id="history">
 			<div>
 				<h3>工作经历</h3>
-				<p>2016.7 --- 2016.12</p>
-				<p>深圳市骏龙电子有限公司北京分公司</p>
-				<p>工作岗位：AE（应用工程师）</p>
-				<p>主要负责给乐视TV维护 MCU 代码，协调 BSP 组与硬件之间的调试工作</p>
+				<div>
+					<p class="time">2016.7 至 2016.12</p>
+					<p>深圳市骏龙电子有限公司北京分公司</p>
+					<p>工作岗位：AE（应用工程师）</p>
+					<p>主要职责：主要负责给乐视TV维护 MCU 代码，协调 BSP 组与硬件之间的调试工作</p>
+				</div>
 			</div>
 		</div>
 		<ul class="mark">
