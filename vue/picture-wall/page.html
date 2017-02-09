@@ -72,25 +72,30 @@
 						最新消息
 						<a href="javascript:void(0)" class="promote" v-on:click="launch=!launch">发表消息</a>
 					</div>
-					<div class="info" v-for="info in infoList">
-						<div class="msg">
-							<img v-bind:src="imgSrc">
-							<span>{{ currentUser.username }}</span>
-							<time>{{ info.launchTime }}</time>
+					<div class="info-ct">
+						<div class="info" v-for="info in infoList" ref="list">
+							<img id="pic" v-bind:src="info.picUrl" v-if="info.picUrl">
+							<p v-if="info.launchContent">{{ info.launchContent }}</p>
+							<!-- <p v-if="info.launchContent!==''">{{ info.launchContent }}</p> -->
+							<div class="msg">
+								<!-- <img v-bind:src="imgSrc">
+								<span>{{ currentUser.username }}</span> -->
+								<time>{{ info.launchTime }}</time>
+							</div>
+							
 						</div>
-						<p>{{ info.launchContent }}</p>
 					</div>
 				</div>
-				<aside>
-					<img v-bind:src="imgSrc">
-					<p>用户名：{{ currentUser.username }}</p>
-				</aside>
 			</div>
 
 			<div class="launch" v-if="launch">
 				<h1>输入你想发表的内容...</h1>
-				<textarea v-model="content"></textarea>
-				<div><a href="javascript:void(0)" v-on:click="addInfo">回复</a></div>
+				<a href="javascript:void(0)" class="triangle" v-on:click="disappear"></a>
+				<div class="ct">
+					<input type="file" name="file" id="photoFileUpload">
+					<textarea v-model="content"></textarea>
+				</div>
+				<div class="btn"><a href="javascript:void(0)" v-on:click="addInfo">回复</a></div>
 			</div>
 
 		</section>

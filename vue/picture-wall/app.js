@@ -24,6 +24,7 @@ var app1 = new Vue({
 	},
 	created: function(){
 		this.currentUser = this.getCurrentUser();
+		
 		this.getInfo();
 	},
 	methods: {
@@ -33,60 +34,130 @@ var app1 = new Vue({
 				month = nowTime.getMonth() + 1,
 				date = nowTime.getDate(),
 				hours = nowTime.getHours(),
-				minutes = nowTime.getMinutes()
+				minutes = nowTime.getMinutes();
+
+			if(minutes<10){
+				minutes = '0' + minutes;
+			}
 
 			this.realTime = year+'-'+month+'-'+date+' '+hours+':'+minutes;
-			this.infoList.push({
+
+			this.infoList.unshift({
 				launchTime: this.realTime,
-				launchContent: this.content
+				launchContent: this.content,
+				picUrl: ''
 			});
+			
 			//隐藏输入框
 			this.launch = false;
 
 			//保存或者更新云端的数据
 			this.newOrUpdate();
 
+			
+
 			this.content = '';
 		},
 		newInfoList: function(){	
-			var dataString = JSON.stringify(this.infoList);	
+
 			// 声明一个 InfoList 类型
 			var InfoList = AV.Object.extend('infoList');
 			// 新建一个 InfoList 对象
 			var infolist = new InfoList();
-
+			
 			// 新建一个 ACL 实例
 			var acl = new AV.ACL();
 			acl.setReadAccess(AV.User.current(),true);
 			acl.setWriteAccess(AV.User.current(),true);
 
-			infolist.set('time', this.realTime);
-			infolist.set('content', this.content);
+			var fileUploadControl = document.getElementById('photoFileUpload');
+			if(fileUploadControl.value){
+				console.log('b')
+				var localFile = fileUploadControl.files[0];
+				var name = 'avatar.jpg';
+				//1
+				var file = new AV.File(name, localFile);
+				
+				file.save().then((file) => {
+					
+					this.infoList[0].picUrl = file.url();
 
-			infolist.setACL(acl);
+					var dataString = JSON.stringify(this.infoList);	
+					infolist.set('content', dataString);
 
-			infolist.save().then((infolist) => {
+					infolist.setACL(acl);
 
-				this.infoList.id = infolist.id;
-				// console.log('新建成功')
-			}, function (error) {
-				// 异常处理
-				// console.error('Failed to create new object, with error message: ' + error.message);
-				console.log('new error');
-			});
+					infolist.save().then((infolist) => {
+
+						this.infoList.id = infolist.id;
+						// console.log('新建成功')
+					}, function (error) {
+						// 异常处理
+						// console.error('Failed to create new object, with error message: ' + error.message);
+						console.log('new error');
+					});
+
+
+				},function(error){
+					console.log('error')
+				});
+			}else{
+				var dataString = JSON.stringify(this.infoList);	
+
+				infolist.set('content', dataString);
+
+				infolist.setACL(acl);
+
+				infolist.save().then((infolist) => {
+
+					this.infoList.id = infolist.id;
+				}, function (error) {
+						// 异常处理
+						// console.error('Failed to create new object, with error message: ' + error.message);
+					console.log('new error');
+				});
+			}
+			
 		},
 		updateInfoList: function(){
-			var dataString = JSON.stringify(this.infoList);
+			
 			// 第一个参数是 className，第二个参数是 objectId
 			var infolist = AV.Object.createWithoutData('infoList', this.infoList.id);
 			// 修改属性
+
+			var fileUploadControl = document.getElementById('photoFileUpload');
+
+			if(fileUploadControl.value){
+				var localFile = fileUploadControl.files[0];
+				var name = 'avatar.jpg';
+				//1
+				var file = new AV.File(name, localFile);
+				
+				file.save().then((file) => {
+
+					this.infoList[0].picUrl = file.url();
+					var dataString = JSON.stringify(this.infoList);
+
+					infolist.set('content', dataString);
+					infolist.save();
+
+				}, function(error) {
+				// 异常处理
+				console.error(error);
+				});			
+			}else{
+				var dataString = JSON.stringify(this.infoList);
+
+				infolist.set('content', dataString);
+				
+
+				// 保存到云端
+				infolist.save();
+			}
 			
-			infolist.set('content', dataString);
-			// 保存到云端
-			infolist.save();
-			// console.log('更新成功')
 		},
 		newOrUpdate: function(){
+			this.waterFall();
 			if(this.infoList.id){
 				this.updateInfoList();
 			}else{
@@ -103,6 +174,8 @@ var app1 = new Vue({
 					let id = alliInfoList.id;
 					this.infoList = JSON.parse(alliInfoList.attributes.content);
 					this.infoList.id = id;
+					
+					this.waterFall();
 				}, function (error) {
 					console.log('get error')
 				});
@@ -162,8 +235,33 @@ var app1 = new Vue({
 				return null;
 			}
 		},
-		stick: function(){
-			console.log(1)
+		waterFall: function(){
+			var eleWidth = 430;
+			var arr = [0,0,0]
+
+			setTimeout(() => {
+				for(var i = 0;i < this.$refs.list.length;i ++){
+					var tag = this.$refs.list[i];
+					var height = this.$refs.list[i].getBoundingClientRect().height + 40;
+					
+					layout(tag, height);
+				}
+				document.getElementsByClassName('info-ct')[0].style.height = Math.max.apply(null, arr) + 'px';
+			},500);
+
+			function layout(tag, height){
+				var theMin = Math.min.apply(null, arr)
+				var theIdx = arr.indexOf(theMin);
+				tag.style.left = eleWidth * theIdx + 'px';
+				tag.style.top = theMin + 'px';
+				arr[theIdx] += height;
+			}
+		},
+		disappear: function(){
+			this.launch = false;
 		}
+		// stick: function(){
+		// 	console.log(1)
+		// }
 	}
 });

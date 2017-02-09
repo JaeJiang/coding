@@ -79,6 +79,7 @@
 		},
 		created: function created() {
 			this.currentUser = this.getCurrentUser();
+
 			this.getInfo();
 		},
 		methods: {
@@ -90,11 +91,18 @@
 				    hours = nowTime.getHours(),
 				    minutes = nowTime.getMinutes();
 
+				if (minutes < 10) {
+					minutes = '0' + minutes;
+				}
+
 				this.realTime = year + '-' + month + '-' + date + ' ' + hours + ':' + minutes;
-				this.infoList.push({
+
+				this.infoList.unshift({
 					launchTime: this.realTime,
-					launchContent: this.content
+					launchContent: this.content,
+					picUrl: ''
 				});
+
 				//隐藏输入框
 				this.launch = false;
 
@@ -106,7 +114,6 @@
 			newInfoList: function newInfoList() {
 				var _this = this;
 
-				var dataString = JSON.stringify(this.infoList);
 				// 声明一个 InfoList 类型
 				var InfoList = _leancloudStorage2.default.Object.extend('infoList');
 				// 新建一个 InfoList 对象
@@ -117,33 +124,89 @@
 				acl.setReadAccess(_leancloudStorage2.default.User.current(), true);
 				acl.setWriteAccess(_leancloudStorage2.default.User.current(), true);
 
-				infolist.set('time', this.realTime);
-				infolist.set('content', this.content);
+				var fileUploadControl = document.getElementById('photoFileUpload');
+				if (fileUploadControl.value) {
+					console.log('b');
+					var localFile = fileUploadControl.files[0];
+					var name = 'avatar.jpg';
+					//1
+					var file = new _leancloudStorage2.default.File(name, localFile);
 
-				infolist.setACL(acl);
+					file.save().then(function (file) {
 
-				infolist.save().then(function (infolist) {
+						_this.infoList[0].picUrl = file.url();
 
-					_this.infoList.id = infolist.id;
-					// console.log('新建成功')
-				}, function (error) {
-					// 异常处理
-					// console.error('Failed to create new object, with error message: ' + error.message);
-					console.log('new error');
-				});
+						var dataString = JSON.stringify(_this.infoList);
+						infolist.set('content', dataString);
+
+						infolist.setACL(acl);
+
+						infolist.save().then(function (infolist) {
+
+							_this.infoList.id = infolist.id;
+							// console.log('新建成功')
+						}, function (error) {
+							// 异常处理
+							// console.error('Failed to create new object, with error message: ' + error.message);
+							console.log('new error');
+						});
+					}, function (error) {
+						console.log('error');
+					});
+				} else {
+					var dataString = JSON.stringify(this.infoList);
+
+					infolist.set('content', dataString);
+
+					infolist.setACL(acl);
+
+					infolist.save().then(function (infolist) {
+
+						_this.infoList.id = infolist.id;
+					}, function (error) {
+						// 异常处理
+						// console.error('Failed to create new object, with error message: ' + error.message);
+						console.log('new error');
+					});
+				}
 			},
 			updateInfoList: function updateInfoList() {
-				var dataString = JSON.stringify(this.infoList);
+				var _this2 = this;
+
 				// 第一个参数是 className，第二个参数是 objectId
 				var infolist = _leancloudStorage2.default.Object.createWithoutData('infoList', this.infoList.id);
 				// 修改属性
 
-				infolist.set('content', dataString);
-				// 保存到云端
-				infolist.save();
-				// console.log('更新成功')
+				var fileUploadControl = document.getElementById('photoFileUpload');
+
+				if (fileUploadControl.value) {
+					var localFile = fileUploadControl.files[0];
+					var name = 'avatar.jpg';
+					//1
+					var file = new _leancloudStorage2.default.File(name, localFile);
+
+					file.save().then(function (file) {
+
+						_this2.infoList[0].picUrl = file.url();
+						var dataString = JSON.stringify(_this2.infoList);
+
+						infolist.set('content', dataString);
+						infolist.save();
+					}, function (error) {
+						// 异常处理
+						console.error(error);
+					});
+				} else {
+					var dataString = JSON.stringify(this.infoList);
+
+					infolist.set('content', dataString);
+
+					// 保存到云端
+					infolist.save();
+				}
 			},
 			newOrUpdate: function newOrUpdate() {
+				this.waterFall();
 				if (this.infoList.id) {
 					this.updateInfoList();
 				} else {
@@ -151,7 +214,7 @@
 				}
 			},
 			getInfo: function getInfo() {
-				var _this2 = this;
+				var _this3 = this;
 
 				if (this.currentUser) {
 					this.status = true;
@@ -160,15 +223,17 @@
 					query.find().then(function (infolist) {
 						var alliInfoList = infolist[0];
 						var id = alliInfoList.id;
-						_this2.infoList = JSON.parse(alliInfoList.attributes.content);
-						_this2.infoList.id = id;
+						_this3.infoList = JSON.parse(alliInfoList.attributes.content);
+						_this3.infoList.id = id;
+
+						_this3.waterFall();
 					}, function (error) {
 						console.log('get error');
 					});
 				}
 			},
 			signUp: function signUp() {
-				var _this3 = this;
+				var _this4 = this;
 
 				// 新建 AVUser 对象实例
 				var user = new _leancloudStorage2.default.User();
@@ -179,27 +244,27 @@
 
 				user.signUp().then(function (loginedUser) {
 
-					_this3.currentUser = _this3.getCurrentUser();
+					_this4.currentUser = _this4.getCurrentUser();
 					alert('注册成功');
 
 					//显示信息页面
-					_this3.status = true;
+					_this4.status = true;
 				}, function (error) {
 					console.log('signUp error');
 				});
 			},
 			login: function login() {
-				var _this4 = this;
+				var _this5 = this;
 
 				_leancloudStorage2.default.User.logIn(this.username, this.password).then(function (loginedUser) {
-					_this4.currentUser = _this4.getCurrentUser();
+					_this5.currentUser = _this5.getCurrentUser();
 
-					_this4.getInfo();
+					_this5.getInfo();
 
 					// console.log('登陆成功');
 
 					//显示信息页面
-					_this4.status = true;
+					_this5.status = true;
 				}, function (error) {
 					console.log('login error');
 				});
@@ -227,9 +292,36 @@
 					return null;
 				}
 			},
-			stick: function stick() {
-				console.log(1);
+			waterFall: function waterFall() {
+				var _this6 = this;
+
+				var eleWidth = 430;
+				var arr = [0, 0, 0];
+
+				setTimeout(function () {
+					for (var i = 0; i < _this6.$refs.list.length; i++) {
+						var tag = _this6.$refs.list[i];
+						var height = _this6.$refs.list[i].getBoundingClientRect().height + 40;
+
+						layout(tag, height);
+					}
+					document.getElementsByClassName('info-ct')[0].style.height = Math.max.apply(null, arr) + 'px';
+				}, 500);
+
+				function layout(tag, height) {
+					var theMin = Math.min.apply(null, arr);
+					var theIdx = arr.indexOf(theMin);
+					tag.style.left = eleWidth * theIdx + 'px';
+					tag.style.top = theMin + 'px';
+					arr[theIdx] += height;
+				}
+			},
+			disappear: function disappear() {
+				this.launch = false;
 			}
+			// stick: function(){
+			// 	console.log(1)
+			// }
 		}
 	});
 
